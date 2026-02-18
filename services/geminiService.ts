@@ -56,11 +56,13 @@ export const sendMessageToConcierge = async (
   try {
     const apiKey = process.env.API_KEY;
     
-    if (!apiKey) {
-      console.warn("API Key is missing from environment variables.");
-      return "Secure connection failed. Credentials not verified.";
+    // Explicit check to prevent SDK crash
+    if (!apiKey || apiKey === '') {
+      console.warn("CAC Security Protocol: Credentials Missing");
+      return "Secure connection failed. Authorization missing.";
     }
 
+    console.log("Initializing Secure Connection...");
     const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
     
