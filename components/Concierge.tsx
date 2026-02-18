@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { sendMessageToConcierge } from '../services/geminiService';
 import { ChatMessage } from '../types';
-import { Send, Terminal } from 'lucide-react';
+import { Send, Fingerprint } from 'lucide-react';
 
 const Concierge: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'model',
-      text: 'Greetings. I am the Private Secretary for Civil Arms. How may I facilitate your geopolitical objectives today?',
+      text: 'Civil Arms Private Secretary online. I am at your disposal for all inquiries regarding the Vikram series and relevant jurisdictional protocols.',
       timestamp: new Date()
     }
   ]);
@@ -42,67 +42,83 @@ const Concierge: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-full flex items-center justify-center p-4 pt-12 pb-24">
-      <div className="w-full max-w-2xl bg-[#faf9f6] border border-[#1c1917]/10 h-[70vh] flex flex-col shadow-2xl relative">
-        {/* Header */}
-        <div className="p-6 border-b border-[#1c1917]/5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+    <div className="h-screen w-full flex items-center justify-center p-4 pt-12 pb-24 bg-[#e8e6e1] bg-opacity-30">
+      <div className="w-full max-w-3xl flex flex-col relative">
+        
+        {/* Card Container */}
+        <div className="bg-[#faf9f6] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-[#1c1917]/5 h-[75vh] flex flex-col relative overflow-hidden">
+            
+            {/* Header */}
+            <div className="p-8 pb-4 flex items-center justify-between border-b border-[#1c1917]/5">
                 <div>
-                    <h2 className="luxury-serif text-xl">Private Secretary</h2>
-                    <p className="text-[10px] uppercase tracking-widest text-[#1c1917]/40">Secure Channel • End-to-End Encrypted</p>
+                    <h2 className="luxury-serif text-3xl text-[#1c1917]">Private Secretary</h2>
+                    <div className="flex items-center gap-2 mt-2">
+                        <div className="w-1.5 h-1.5 bg-[#1c1917] rounded-full animate-pulse"></div>
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-[#1c1917]/50">Secure Link • New Delhi HQ</p>
+                    </div>
+                </div>
+                <Fingerprint className="text-[#1c1917]/10 w-12 h-12" strokeWidth={0.5} />
+            </div>
+
+            {/* Messages */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 space-y-12">
+            {messages.map((msg, idx) => (
+                <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                <div className={`max-w-[85%] relative`}>
+                    {msg.role === 'model' && (
+                        <span className="absolute -left-6 top-1 text-[8px] font-mono text-[#1c1917]/30">SEC</span>
+                    )}
+                    {msg.role === 'user' && (
+                        <span className="absolute -right-6 top-1 text-[8px] font-mono text-[#1c1917]/30">YOU</span>
+                    )}
+                    
+                    <p className={`text-base md:text-lg leading-relaxed ${
+                        msg.role === 'user' 
+                        ? 'font-serif italic text-[#1c1917]/60' 
+                        : 'font-sans font-light text-[#1c1917]'
+                    }`}>
+                    {msg.text}
+                    </p>
+                </div>
+                </div>
+            ))}
+            {isTyping && (
+                <div className="flex items-center gap-2 text-[#1c1917]/30">
+                    <span className="text-[9px] uppercase tracking-widest animate-pulse">Transmitting</span>
+                </div>
+            )}
+            </div>
+
+            {/* Input */}
+            <div className="p-8 pt-4 bg-[#faf9f6]">
+                <div className="relative group">
+                    <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    placeholder="Dictate your missive..."
+                    className="w-full bg-transparent border-b border-[#1c1917]/20 py-4 pr-12 text-lg font-serif italic text-[#1c1917] focus:outline-none focus:border-[#1c1917] transition-all placeholder:text-[#1c1917]/20"
+                    />
+                    <button 
+                        onClick={handleSend}
+                        disabled={!input.trim() || isTyping}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1c1917]/40 hover:text-[#1c1917] transition-colors disabled:opacity-0"
+                    >
+                    <Send size={20} strokeWidth={1} />
+                    </button>
                 </div>
             </div>
-            <Terminal size={16} className="text-[#1c1917]/20" />
-        </div>
-
-        {/* Chat Area */}
-        <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-8">
-          {messages.map((msg, idx) => (
-            <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-              <div className={`max-w-[80%] ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
-                <p className={`text-sm leading-relaxed ${msg.role === 'user' ? 'font-light text-[#1c1917]/60' : 'font-normal text-[#1c1917]'}`}>
-                  {msg.text}
-                </p>
-                <span className="text-[9px] uppercase tracking-widest text-[#1c1917]/20 mt-2 block">
-                    {msg.role === 'model' ? 'Secretary' : 'Client'} • {msg.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                </span>
-              </div>
+            
+            {/* Watermark */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.02]">
+                 <img src="https://www.transparenttextures.com/patterns/cubes.png" alt="" className="w-64 h-64" />
             </div>
-          ))}
-          {isTyping && (
-            <div className="flex items-start">
-               <div className="text-xs text-[#1c1917]/40 italic animate-pulse">The Secretary is composing a response...</div>
-            </div>
-          )}
-        </div>
 
-        {/* Input Area */}
-        <div className="p-6 border-t border-[#1c1917]/5 bg-[#faf9f6]">
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Type your inquiry..."
-              className="w-full bg-transparent border-b border-[#1c1917]/20 py-3 pr-12 text-sm focus:outline-none focus:border-[#1c1917]/60 transition-colors placeholder:text-[#1c1917]/20 font-light"
-            />
-            <button 
-                onClick={handleSend}
-                disabled={!input.trim() || isTyping}
-                className="absolute right-0 text-[#1c1917] hover:text-[#1c1917]/60 transition-colors disabled:opacity-30"
-            >
-              <Send size={16} strokeWidth={1.5} />
-            </button>
-          </div>
         </div>
         
-        {/* Decorative Corner Lines */}
-        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#1c1917]"></div>
-        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#1c1917]"></div>
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#1c1917]"></div>
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#1c1917]"></div>
+        {/* Background stack effect */}
+        <div className="absolute top-2 left-2 w-full h-full bg-[#1c1917] -z-10 opacity-5"></div>
       </div>
     </div>
   );

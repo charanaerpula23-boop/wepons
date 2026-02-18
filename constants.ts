@@ -3,7 +3,7 @@ import { Lot } from './types';
 export const LOTS: Lot[] = [
   {
     id: 'L-001',
-    name: 'Vikram 9',
+    name: 'Vikram Sentinel',
     category: 'Kinetic',
     description: 'A precision-engineered 9mm kinetic instrument featuring superior accuracy metrics. Designated for Prohibited Bore (PB) license holders and global export.',
     price: 'Inquire',
@@ -12,7 +12,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-002',
-    name: 'Vikram NPB',
+    name: 'Vikram Estate',
     category: 'Kinetic',
     description: 'The sovereign choice for private entity defense. Fully compliant with Non-Prohibited Bore regulations for civilian acquisition.',
     price: 'Inquire',
@@ -21,7 +21,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-003',
-    name: 'Vikram 9A',
+    name: 'Vikram Operator',
     category: 'Kinetic',
     description: 'Advanced tactical iteration designed exclusively for State Apparatus. Optimized for high-threat environments and special operations.',
     price: 'Inquire',
@@ -30,7 +30,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-004',
-    name: 'Triton’s Decree',
+    name: 'Vikram Trident',
     category: 'Maritime',
     description: 'Submersible interdiction craft for littoral dominance.',
     price: 'Inquire',
@@ -39,7 +39,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-005',
-    name: 'The Diplomat',
+    name: 'Vikram Reach',
     category: 'Kinetic',
     description: 'Long-range negotiation tool designed for high-value target acquisition.',
     price: 'Inquire',
@@ -48,7 +48,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-006',
-    name: 'Aegis Network',
+    name: 'Vikram Aether',
     category: 'Aerial',
     description: 'Swarm-capable defense grid for estate protection.',
     price: 'Inquire',
@@ -57,7 +57,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-007',
-    name: 'Ghost Protocol',
+    name: 'Vikram Silence',
     category: 'Kinetic',
     description: 'A dedicated suppressed platform for operations requiring absolute silence and zero footprint. The ultimate tool for discreet resolution.',
     price: 'Inquire',
@@ -66,7 +66,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-008',
-    name: 'The Concierge',
+    name: 'Vikram Veil',
     category: 'Kinetic',
     description: 'Ultra-compact personal defense weapon designed for discreet carry under formal attire. Sovereignty that fits in a breast pocket.',
     price: 'Inquire',
@@ -75,7 +75,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-009',
-    name: 'Sector Control',
+    name: 'Vikram Legion',
     category: 'Kinetic',
     description: 'A modular carbine system offering adaptability for dynamic urban combat scenarios. Configurable for any threat environment.',
     price: 'Inquire',
@@ -84,7 +84,7 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-010',
-    name: 'Imperium',
+    name: 'Vikram Monarch',
     category: 'Kinetic',
     description: 'A masterwork of ballistics. Hand-finished for the collector who demands lethality with bespoke elegance.',
     price: 'Inquire',
@@ -93,12 +93,48 @@ export const LOTS: Lot[] = [
   },
   {
     id: 'L-011',
-    name: 'Vanguard Heavy',
+    name: 'Vikram Phalanx',
     category: 'Kinetic',
     description: 'Sustained fire capability for perimeter defense and convoy protection. Overwhelming force on demand.',
     price: 'Inquire',
     image: 'https://i.pinimg.com/736x/aa/ac/77/aaac775822664c3a50fd7848e19e4cfc.jpg',
     details: ['Feed: Box/Drum', 'Bipod: Integrated', 'Cooling: Air-Cooled']
+  },
+  {
+    id: 'L-012',
+    name: 'Vikram Praetorian',
+    category: 'Kinetic',
+    description: 'An elite tactical carbine designed for close-protection details. Uncompromising reliability for the principal\'s inner circle.',
+    price: 'Inquire',
+    image: 'https://i.pinimg.com/736x/ca/a1/c4/caa1c4fe3042bd384f25b74e078b537e.jpg',
+    details: ['Configuration: SBR', 'Optic: Holographic', 'Role: CQB']
+  },
+  {
+    id: 'L-013',
+    name: 'Vikram Wraith',
+    category: 'Kinetic',
+    description: 'A discreet carry solution that speaks only when necessary. The preferred sidearm of intelligence attaches.',
+    price: 'Inquire',
+    image: 'https://i.pinimg.com/736x/2d/6a/11/2d6a118b44fefd9d24d5504b93abe28c.jpg',
+    details: ['Frame: Polymer', 'Action: Safe Action', 'Concealment: High']
+  },
+  {
+    id: 'L-014',
+    name: 'Vikram Zenith',
+    category: 'Kinetic',
+    description: 'Performance-tuned for competitive dominance and defensive superiority. A fusion of sport and survival.',
+    price: 'Inquire',
+    image: 'https://i.pinimg.com/736x/19/b3/66/19b36679a551a12510f7c99e13e35d72.jpg',
+    details: ['Trigger: Match Grade', 'Slide: Ported', 'Grip: Aggressive Texture']
+  },
+  {
+    id: 'L-015',
+    name: 'Vikram Chimera',
+    category: 'Kinetic',
+    description: 'A hybrid platform bridging the gap between assault and precision. For environments where the rules of engagement are fluid.',
+    price: 'Inquire',
+    image: 'https://i.pinimg.com/736x/d4/ab/9d/d4ab9d7793dea5c8747b664b5debb9e1.jpg',
+    details: ['Barrel: 14.5"', 'Rail: Quad', 'Stock: Adjustable']
   }
 ];
 
