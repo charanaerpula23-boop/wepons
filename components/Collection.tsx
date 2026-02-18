@@ -20,7 +20,7 @@ const Collection: React.FC = () => {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-        {LOTS.map((lot, index) => (
+        {LOTS.map((lot) => (
           <div key={lot.id} className="group relative flex flex-col">
             
             {/* Image Area - No box, floating blend */}
