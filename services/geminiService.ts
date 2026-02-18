@@ -1,8 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
-
 const SYSTEM_INSTRUCTION = `
 You are the "Private Secretary" for Civil Arms Company, an ultra-luxury defense contractor based in India.
 Your tone is haughty, professional, euphemistic, and elitist. 
@@ -57,6 +54,14 @@ export const sendMessageToConcierge = async (
   history: { role: 'user' | 'model'; text: string }[]
 ): Promise<string> => {
   try {
+    const apiKey = process.env.API_KEY;
+    
+    if (!apiKey) {
+      console.warn("API Key is missing from environment variables.");
+      return "Secure connection failed. Credentials not verified.";
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     const model = 'gemini-3-flash-preview';
     
     // We use chat to maintain context of the sophisticated conversation
