@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, Lock, FileText, Building2 } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 type ProtocolSection = 'civilian' | 'state' | 'export';
 
